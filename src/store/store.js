@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
             {name: 'Shiny Star', price: 40},
             {name: 'Green Shells', price: 60},
             {name: 'Red Shells', price: 80}
-  ]
+     ]
     },
     getters: {
         saleProducts: state => {
@@ -21,6 +21,13 @@ export const store = new Vuex.Store({
                 }
             })
             return saleProducts
+        }
+    },
+    mutations: {
+        reducePrice: state => {
+            this.$store.state.products.forEach(product => {
+                product.price -= 1       
+            })
         }
     }
 })
