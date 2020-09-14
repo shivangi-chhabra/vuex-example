@@ -11,23 +11,32 @@
     </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
+
 export default {
     computed: {
         products() {
            return this.$store.state.products
         },
-        saleProducts() {
+        /*saleProducts() {
             return this.$store.getters.saleProducts
-        }       
+        }*/ 
+        ...mapGetters([
+            'saleProducts'
+        ])      
     },
     methods: {
-        reducePrice: function(amount) {
+        //reducePrice: function(amount) {
             /*this.$store.state.products.forEach(product => {
                 product.price -= 1       
             })*/
             // this.$store.commit('reducePrice')
-            this.$store.dispatch('reducePrice',amount)
-        }
+         //   this.$store.dispatch('reducePrice',amount)
+       // }
+       ...mapActions([
+           'reducePrice'
+       ])
     }   
 }
 </script>
